@@ -1,5 +1,6 @@
-import React from "react";
-import { Container, Row, Col, Nav } from "react-bootstrap";
+import React, { useState } from "react";
+import Cart from "./Cart";
+import { Container, Row, Col, Nav, Card, Button } from "react-bootstrap";
 import logo from "../images/logo.svg";
 import profile from "../images/image-avatar.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavMenu = ({ toggle, setToggle }) => {
+  // State
+  const [cartToggle, setCartToggle] = useState(false);
   return (
     <Container className="">
       <Row>
@@ -36,9 +39,13 @@ const NavMenu = ({ toggle, setToggle }) => {
           md="auto"
           className="profile  d-flex align-items-center justify-content-around"
         >
-          <FontAwesomeIcon icon={faShoppingCart} />
+          <FontAwesomeIcon
+            onClick={() => setCartToggle(!cartToggle)}
+            icon={faShoppingCart}
+          />
           <img src={profile} alt="avatar" />
         </Col>
+        {cartToggle && <Cart />}
       </Row>
     </Container>
   );
