@@ -3,19 +3,26 @@ import { Container, Row, Col, Nav } from "react-bootstrap";
 import logo from "../images/logo.svg";
 import profile from "../images/image-avatar.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faShoppingCart,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 
-const NavMenu = () => {
+const NavMenu = ({ toggle, setToggle }) => {
   return (
     <Container className="">
       <Row>
-        <Col xs={1} md={2} className="d-md-none d-block ">
-          <FontAwesomeIcon icon={faBars} />
+        <Col xs={1} md={2} className="d-lg-none d-block">
+          <FontAwesomeIcon
+            onClick={() => setToggle(!toggle)}
+            icon={toggle ? faTimes : faBars}
+          />
         </Col>
         <Col className="">
-          <img src={logo} alt="logo" />
+          <img src={logo} fluid alt="logo" />
         </Col>
-        <Col className="d-none d-md-block " md="8">
+        <Col className="d-none d-lg-block " sm={8}>
           <Nav className="me-auto">
             <Nav.Link href="#Collections">Collections</Nav.Link>
             <Nav.Link href="#Men">Men</Nav.Link>

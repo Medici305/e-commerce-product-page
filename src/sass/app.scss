@@ -1,6 +1,7 @@
 // Imports
 @import "./components/app.responsive";
 @import "./components//nav";
+@import "./components/dropdown";
 @import "./components/variables";
 
 * {
@@ -9,12 +10,17 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Kumbh Sans";
+}
+
 a {
   color: $Dark-grayish-blue !important;
 }
 
 .page {
   min-height: 100vh;
+  position: relative;
   .nav-bar {
     min-height: 20vh;
     //border: 2px solid blue;
