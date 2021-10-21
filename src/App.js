@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import NavMenu from "./components/NavMenu";
 import Dropdown from "./components/Dropdown";
+import Product from "./components/Product";
 import { Container, Row, Col } from "react-bootstrap";
 import "./sass/app.scss";
 
@@ -16,7 +17,9 @@ const App = () => {
         </Col>
       </Row>
       {/* 2. Main Content */}
-      <Row className="main-content"></Row>
+      <Row className="main-content">
+        <Product />
+      </Row>
       {/* 3. Dropdown menu */}
       {toggle && <Dropdown toggle={toggle} setToggle={setToggle} />}
     </Container>

@@ -13,6 +13,7 @@ const Cart = () => {
         right: "2%",
         top: "100%",
         padding: "1rem 0",
+        zIndex: 5,
       }}
       className="shadow rounded-lg"
     >
