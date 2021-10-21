@@ -1,0 +1,26 @@
+// Imports
+@import "./components/app.responsive";
+@import "./components//nav";
+@import "./components/variables";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: $Dark-grayish-blue !important;
+}
+
+.page {
+  min-height: 100vh;
+  .nav-bar {
+    min-height: 20vh;
+    //border: 2px solid blue;
+  }
+  .main-content {
+    min-height: 79.5vh;
+    //border: 2px solid red;
+  }
+}
