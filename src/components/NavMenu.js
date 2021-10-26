@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Cart from "./Cart";
-import { Container, Row, Col, Nav, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Nav } from "react-bootstrap";
 import logo from "../images/logo.svg";
 import profile from "../images/image-avatar.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

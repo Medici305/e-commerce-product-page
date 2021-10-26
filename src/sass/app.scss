@@ -18,6 +18,45 @@ a {
   color: $Dark-grayish-blue !important;
 }
 
+h1 {
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 1rem !important;
+  color: $Orange;
+  background: $Pale-orange;
+  padding: 0.2rem 0.4rem;
+}
+
+h5 {
+  font-size: 1rem !important;
+  color: $Grayish-blue;
+}
+
+p {
+  color: $Dark-grayish-blue;
+}
+
+h6 {
+  color: $Orange;
+  font-weight: 700;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.1rem;
+}
+
+button {
+  background: $Orange !important;
+  border: none !important;
+}
+
+.counter {
+  background: $Light-grayish-blue !important;
+  svg {
+    color: $Orange !important;
+  }
+}
+
 .page {
   min-height: 100vh;
   position: relative;

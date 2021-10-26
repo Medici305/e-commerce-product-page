@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Nav, Card, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import shoe from "../images/image-product-1-thumbnail.jpg";
