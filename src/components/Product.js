@@ -13,12 +13,12 @@ const Product = () => {
     <Container>
       {/* Responsive carousel */}
       <SlideImages />
-      <Row className="d-none d-lg-flex my-5">
+      <Row className="my-5">
         {/* Left side with shoe images */}
-        <Col xs={12} lg={6} className="">
+        <Col xs={12} lg={6} className="d-none d-lg-block">
           {/* Center stage main photo */}
           <Row className="d-flex justify-content-center align-items-center mb-4">
-            <Col xs={8} className="px-0">
+            <Col xs={10} className="px-0">
               <img
                 src={image1}
                 style={{ width: "100%", height: "auto", objectFit: "cover" }}
@@ -28,7 +28,7 @@ const Product = () => {
             </Col>
           </Row>
           {/* Back up dancers thumbnail */}
-          <Row className=" d-flex justify-content-around align-items-center">
+          <Row className=" d-flex justify-content-evenly">
             {smallImg.map((img) => (
               <Thumbnail src={img.pic} text={img.desc} />
             ))}

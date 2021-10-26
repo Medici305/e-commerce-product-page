@@ -12,7 +12,7 @@ const Detail = () => {
   return (
     <Container className="h-100 d-flex justify-content-center align-items-center">
       <Row className="d-flex justify-content-center">
-        <Col md={9}>
+        <Col xs={12} lg={9}>
           {/* 1. Company name */}
           <h6 className="text-uppercase font-weight-bold">Sneaker Company</h6>
           {/* 2. Sneaker name */}
@@ -20,7 +20,7 @@ const Detail = () => {
             Fall Limited Edition Sneakers
           </h1>
           {/* 3. Shoe description */}
-          <p className="my-md-4">
+          <p className="mt-md-5 mb-md-4">
             These low-profile sneakers are your perfect casual wear companion.
             Featuring a durable rubber outer sole, they'll withstand everything
             the weather can offer.
@@ -29,7 +29,7 @@ const Detail = () => {
           <Row className="d-flex d-md-block">
             <Col className="d-flex align-items-center">
               <h3 className="font-weight-bold my-0">$125.00</h3>
-              <h4 className="font-weight-bold ml-md-4 rounded my-0">50%</h4>
+              <h4 className="font-weight-bold ml-4 rounded my-0">50%</h4>
             </Col>
             <Col className="mt-md-2 ">
               <h5 className="font-weight-bold">
@@ -40,8 +40,8 @@ const Detail = () => {
           {/* 5. Shoe count and Cart button  */}
           <Row className="mt-5 d-flex justify-content-around">
             <Col
-              md={3}
-              className="counter d-flex justify-content-between align-items-center rounded py-md-3"
+              md={4}
+              className="counter d-flex justify-content-between align-items-center rounded py-3 mb-3 mb-md-0"
             >
               <FontAwesomeIcon className="" icon={faMinus} />
               <h5 className="my-0 text-black font-weight-bold px-md-4">0</h5>
@@ -51,8 +51,8 @@ const Detail = () => {
               md={7}
               className="p-0 rounded d-flex justify-content-center align-items-center"
             >
-              <Button className="w-100 py-md-3 shadow">
-                <FontAwesomeIcon className="mr-2" icon={faShoppingCart} />
+              <Button className="w-100 py-3 shadow font-weight-bold">
+                <FontAwesomeIcon className="mr-3" icon={faShoppingCart} />
                 Add to cart
               </Button>
             </Col>
