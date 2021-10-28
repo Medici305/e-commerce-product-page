@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+
 import Thumbnail from "./Thumbnail";
 import SlideImages from "./SlideImages";
 import Detail from "./Detail";
-import { smallImg } from "../data";
+import { info } from "../data";
 import { Container, Row, Col } from "react-bootstrap";
-import image1 from "../images/image-product-1.jpg";
 
 const Product = () => {
   // State
-  const [centerImg, setCenterImg] = useState();
+  const [gallery, setGallery] = useState(info());
+  const [centerImg, setCenterImg] = useState(gallery[0]);
+  const [counter, setCounter] = useState(0);
+  // Functions
+
   return (
     <Container>
       {/* Responsive carousel */}
@@ -20,7 +24,7 @@ const Product = () => {
           <Row className="d-flex justify-content-center align-items-center mb-4">
             <Col xs={10} className="px-0">
               <img
-                src={image1}
+                src={centerImg.pic}
                 style={{ width: "100%", height: "auto", objectFit: "cover" }}
                 className="img-fluid rounded"
                 alt="Main-sneaker"
@@ -29,14 +33,23 @@ const Product = () => {
           </Row>
           {/* Back up dancers thumbnail */}
           <Row className=" d-flex justify-content-evenly">
-            {smallImg.map((img) => (
-              <Thumbnail src={img.pic} text={img.desc} />
+            {gallery.map((img) => (
+              <Thumbnail
+                img={img}
+                src={img.pic}
+                text={img.desc}
+                thumb={img.thumb}
+                key={img.id}
+                gallery={gallery}
+                setCenterImg={setCenterImg}
+                setGallery={setGallery}
+              />
             ))}
           </Row>
         </Col>
         {/* Right side description of sneaker */}
         <Col xs={12} lg={6} style={{}} className="">
-          <Detail />
+          <Detail counter={counter} setCounter={setCounter} />
         </Col>
       </Row>
     </Container>

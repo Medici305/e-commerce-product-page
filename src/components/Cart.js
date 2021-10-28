@@ -30,7 +30,11 @@ const Cart = () => {
           <Card.Text>Shoe name and price from State.</Card.Text>
           <FontAwesomeIcon className="text-secondary" icon={faTrash} />
         </div>
-        <Button className="d-block w-100 text-white font-weight-bold" variant="warning" size="lg">
+        <Button
+          className="d-block custom-button w-100 text-white font-weight-bold"
+          variant="warning"
+          size="lg"
+        >
           checkout
         </Button>
       </Card.Body>

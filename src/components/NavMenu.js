@@ -23,7 +23,7 @@ const NavMenu = ({ toggle, setToggle }) => {
           />
         </Col>
         <Col className="">
-          <img src={logo} fluid alt="logo" />
+          <img src={logo} alt="logo" />
         </Col>
         <Col className="d-none d-lg-block " sm={8}>
           <Nav className="me-auto">
