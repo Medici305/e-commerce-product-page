@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Cart from "./Cart";
 import { Container, Row, Col, Nav } from "react-bootstrap";
 import logo from "../images/logo.svg";
@@ -10,7 +11,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
-const NavMenu = ({ toggle, setToggle }) => {
+const NavMenu = ({ toggle, setToggle, counter, basket }) => {
   // State
   const [cartToggle, setCartToggle] = useState(false);
   return (
@@ -23,7 +24,9 @@ const NavMenu = ({ toggle, setToggle }) => {
           />
         </Col>
         <Col className="">
-          <img src={logo} alt="logo" />
+          <Link to="/">
+            <img src={logo} alt="logo" />.
+          </Link>
         </Col>
         <Col className="d-none d-lg-block " sm={8}>
           <Nav className="me-auto">
@@ -39,13 +42,19 @@ const NavMenu = ({ toggle, setToggle }) => {
           md="auto"
           className="profile  d-flex align-items-center justify-content-around"
         >
-          <FontAwesomeIcon
+          <a
+            href="#"
+            className="notification"
             onClick={() => setCartToggle(!cartToggle)}
-            icon={faShoppingCart}
-          />
-          <img src={profile} alt="avatar" />
+          >
+            <FontAwesomeIcon icon={faShoppingCart} />
+            <span>{basket ? counter : 0}</span>
+          </a>
+          <Link to="/sign-up" className="d-flex justify-content-center">
+            <img className="" src={profile} alt="avatar" />
+          </Link>
         </Col>
-        {cartToggle && <Cart />}
+        {cartToggle && <Cart basket={basket} counter={counter} />}
       </Row>
     </Container>
   );

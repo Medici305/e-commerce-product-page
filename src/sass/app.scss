@@ -49,6 +49,7 @@ h6 {
   background: $Orange !important;
   border: none !important;
   letter-spacing: 0.1rem !important;
+  font-size: 0.9rem !important;
 }
 
 .counter {
@@ -73,5 +74,22 @@ h6 {
 
 .highlight {
   border: 2px solid $Orange;
-  opacity: .5;
+  opacity: 0.5;
+}
+
+.sign-up-bg {
+  background-image: url("../images/bg-9.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sign-in-bg {
+  background-image: url("../images/bg-5.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  form {
+    width: 25%;
+  }
 }

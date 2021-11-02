@@ -1,28 +1,26 @@
-import React, { useState } from "react";
-import NavMenu from "./components/NavMenu";
-import Dropdown from "./components/Dropdown";
-import Product from "./components/Product";
-import { Container, Row, Col } from "react-bootstrap";
+import React from "react";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignIn from "./components/SignIn";
+import { Switch, Route } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import "./sass/app.scss";
 
 const App = () => {
-  // State
-  const [toggle, setToggle] = useState(false);
   return (
-    <Container className="page">
-      {/* 1. Navbar */}
-      <Row className="nav-bar border-bottom">
-        <Col className="d-flex justify-content-center align-items-center">
-          <NavMenu toggle={toggle} setToggle={setToggle} />
-        </Col>
-      </Row>
-      {/* 2. Main Content */}
-      <Row className="main-content">
-        <Product />
-      </Row>
-      {/* 3. Dropdown menu */}
-      {toggle && <Dropdown toggle={toggle} setToggle={setToggle} />}
-    </Container>
+    <Switch>
+      <Container fluid className="page p-0 m-0">
+        <Route path="/" exact>
+          <Home />
+        </Route>
+        <Route path="/sign-up">
+          <Login />
+        </Route>
+        <Route path="/sign-in">
+          <SignIn />
+        </Route>
+      </Container>
+    </Switch>
   );
 };
 

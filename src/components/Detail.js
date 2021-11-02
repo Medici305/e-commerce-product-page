@@ -1,4 +1,5 @@
 import React from "react";
+import { sneaker } from "../data";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../sass/app.scss";
 
-const Detail = ({ counter, setCounter }) => {
+const Detail = ({ counter, setCounter, setBasket, basket }) => {
   // Functions
   const handleAddToCounter = () => {
     setCounter((prev) => prev + 1);
@@ -16,31 +17,32 @@ const Detail = ({ counter, setCounter }) => {
   const handleRemoveFromCounter = () => {
     setCounter((prev) => prev - 1);
   };
+
+  const handleAddToBasket = () => {
+    
+    return counter > 0 ? setBasket(true) : setBasket(false);
+  };
   return (
     <Container className="h-100 d-flex justify-content-center align-items-center">
       <Row className="d-flex justify-content-center">
         <Col xs={12} lg={9}>
           {/* 1. Company name */}
-          <h6 className="text-uppercase font-weight-bold">Sneaker Company</h6>
+          <h6 className="text-uppercase font-weight-bold">{sneaker.company}</h6>
           {/* 2. Sneaker name */}
-          <h1 className="font-weight-bold my-md-3">
-            Fall Limited Edition Sneakers
-          </h1>
+          <h1 className="font-weight-bold my-md-3">{sneaker.name}</h1>
           {/* 3. Shoe description */}
-          <p className="mt-md-5 mb-md-4">
-            These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they'll withstand everything
-            the weather can offer.
-          </p>
+          <p className="mt-md-5 mb-md-4">{sneaker.description}</p>
           {/* 4. Price */}
           <Row className="d-flex d-md-block">
             <Col className="d-flex align-items-center">
-              <h3 className="font-weight-bold my-0">$125.00</h3>
-              <h4 className="font-weight-bold ml-4 rounded my-0">50%</h4>
+              <h3 className="font-weight-bold my-0">${sneaker.sale}.00</h3>
+              <h4 className="font-weight-bold ml-4 rounded my-0">
+                {sneaker.discount}
+              </h4>
             </Col>
             <Col className="mt-md-2 ">
               <h5 className="font-weight-bold">
-                <s>$250.00</s>
+                <s>${sneaker.originalPrice}</s>
               </h5>
             </Col>
           </Row>
@@ -51,7 +53,7 @@ const Detail = ({ counter, setCounter }) => {
               className="counter d-flex justify-content-between align-items-center rounded py-2 mb-3 mb-md-0"
             >
               <Button
-                className="btn"
+                className="btn p-0"
                 style={{ background: "none", border: "none" }}
                 type="button"
                 onClick={() => handleRemoveFromCounter()}
@@ -63,7 +65,7 @@ const Detail = ({ counter, setCounter }) => {
                 {counter}
               </h5>
               <Button
-                className="btn"
+                className="btn p-0"
                 style={{ background: "none", border: "none" }}
                 type="button"
                 onClick={() => handleAddToCounter()}
@@ -75,7 +77,10 @@ const Detail = ({ counter, setCounter }) => {
               md={7}
               className="p-0 rounded d-flex justify-content-center align-items-center"
             >
-              <Button className="w-100 py-3 custom-button shadow font-weight-bold">
+              <Button
+                onClick={handleAddToBasket}
+                className="w-100 py-3 custom-button shadow font-weight-bold"
+              >
                 <FontAwesomeIcon className="mr-3" icon={faShoppingCart} />
                 Add to cart
               </Button>

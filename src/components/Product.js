@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-
 import Thumbnail from "./Thumbnail";
 import SlideImages from "./SlideImages";
 import Detail from "./Detail";
 import { info } from "../data";
 import { Container, Row, Col } from "react-bootstrap";
 
-const Product = () => {
+const Product = ({ counter, setCounter, setBasket, basket }) => {
   // State
   const [gallery, setGallery] = useState(info());
   const [centerImg, setCenterImg] = useState(gallery[0]);
-  const [counter, setCounter] = useState(0);
   // Functions
 
   return (
@@ -49,7 +47,12 @@ const Product = () => {
         </Col>
         {/* Right side description of sneaker */}
         <Col xs={12} lg={6} style={{}} className="">
-          <Detail counter={counter} setCounter={setCounter} />
+          <Detail
+            counter={counter}
+            setCounter={setCounter}
+            setBasket={setBasket}
+            basket={basket}
+          />
         </Col>
       </Row>
     </Container>
