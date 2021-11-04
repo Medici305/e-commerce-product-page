@@ -5,7 +5,14 @@ import Detail from "./Detail";
 import { info } from "../data";
 import { Container, Row, Col } from "react-bootstrap";
 
-const Product = ({ counter, setCounter, setBasket, basket }) => {
+const Product = ({
+  counter,
+  setCounter,
+  setBasket,
+  basket,
+  cartItem,
+  setCartItem,
+}) => {
   // State
   const [gallery, setGallery] = useState(info());
   const [centerImg, setCenterImg] = useState(gallery[0]);
@@ -52,6 +59,8 @@ const Product = ({ counter, setCounter, setBasket, basket }) => {
             setCounter={setCounter}
             setBasket={setBasket}
             basket={basket}
+            cartItem={cartItem}
+            setCartItem={setCartItem}
           />
         </Col>
       </Row>

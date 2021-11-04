@@ -11,9 +11,16 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
-const NavMenu = ({ toggle, setToggle, counter, basket }) => {
-  // State
-  const [cartToggle, setCartToggle] = useState(false);
+const NavMenu = ({
+  toggle,
+  setToggle,
+  counter,
+  basket,
+  cartItem,
+  setCartToggle,
+  cartToggle,
+  setCartItem,
+}) => {
   return (
     <Container className="">
       <Row>
@@ -40,7 +47,7 @@ const NavMenu = ({ toggle, setToggle, counter, basket }) => {
         <Col
           xs={4}
           md="auto"
-          className="profile  d-flex align-items-center justify-content-around"
+          className="profile d-flex align-items-center justify-content-around"
         >
           <a
             href="#"
@@ -48,13 +55,15 @@ const NavMenu = ({ toggle, setToggle, counter, basket }) => {
             onClick={() => setCartToggle(!cartToggle)}
           >
             <FontAwesomeIcon icon={faShoppingCart} />
-            <span>{basket ? counter : 0}</span>
+            <span>{basket ? cartItem : 0}</span>
           </a>
-          <Link to="/sign-up" className="d-flex justify-content-center">
+          <Link to="/" className="d-flex justify-content-center">
             <img className="" src={profile} alt="avatar" />
           </Link>
         </Col>
-        {cartToggle && <Cart basket={basket} counter={counter} />}
+        {cartToggle && (
+          <Cart basket={basket} cartItem={cartItem} setCartItem={setCartItem} />
+        )}
       </Row>
     </Container>
   );

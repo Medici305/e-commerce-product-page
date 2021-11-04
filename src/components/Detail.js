@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { sneaker } from "../data";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,18 +9,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../sass/app.scss";
 
-const Detail = ({ counter, setCounter, setBasket, basket }) => {
-  // Functions
-  const handleAddToCounter = () => {
-    setCounter((prev) => prev + 1);
-  };
-  const handleRemoveFromCounter = () => {
-    setCounter((prev) => prev - 1);
-  };
-
-  const handleAddToBasket = () => {
-    
-    return counter > 0 ? setBasket(true) : setBasket(false);
+const Detail = ({
+  counter,
+  setCounter,
+  setBasket,
+  basket,
+  cartItem,
+  setCartItem,
+}) => {
+  // UseEffect
+  useEffect(() => {
+    return cartItem > 0 ? setBasket(true) : setBasket(false);
+  }, [cartItem]);
+  // Function
+  const handleCartSubmit = () => {
+    setCartItem((prev) => prev + counter);
+    setCounter(0);
   };
   return (
     <Container className="h-100 d-flex justify-content-center align-items-center">
@@ -56,7 +60,7 @@ const Detail = ({ counter, setCounter, setBasket, basket }) => {
                 className="btn p-0"
                 style={{ background: "none", border: "none" }}
                 type="button"
-                onClick={() => handleRemoveFromCounter()}
+                onClick={() => setCounter((prev) => prev - 1)}
                 disabled={counter <= 0 ? true : false}
               >
                 <FontAwesomeIcon icon={faMinus} />
@@ -68,7 +72,7 @@ const Detail = ({ counter, setCounter, setBasket, basket }) => {
                 className="btn p-0"
                 style={{ background: "none", border: "none" }}
                 type="button"
-                onClick={() => handleAddToCounter()}
+                onClick={() => setCounter((prev) => prev + 1)}
               >
                 <FontAwesomeIcon icon={faPlus} />
               </Button>
@@ -78,7 +82,7 @@ const Detail = ({ counter, setCounter, setBasket, basket }) => {
               className="p-0 rounded d-flex justify-content-center align-items-center"
             >
               <Button
-                onClick={handleAddToBasket}
+                onClick={handleCartSubmit}
                 className="w-100 py-3 custom-button shadow font-weight-bold"
               >
                 <FontAwesomeIcon className="mr-3" icon={faShoppingCart} />

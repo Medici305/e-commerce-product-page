@@ -1,7 +1,6 @@
 import React from "react";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignIn from "./components/SignIn";
+import Checkout from "./pages/Checkout";
 import { Switch, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import "./sass/app.scss";
@@ -13,11 +12,8 @@ const App = () => {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/sign-up">
-          <Login />
-        </Route>
-        <Route path="/sign-in">
-          <SignIn />
+        <Route path="/checkout">
+          <Checkout />
         </Route>
       </Container>
     </Switch>

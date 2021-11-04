@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Bin from "./Bin";
+import { Link } from "react-router-dom";
 import { sneaker } from "../data";
 import { Card, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import shoe from "../images/image-product-1-thumbnail.jpg";
 
-const Cart = ({ basket, counter }) => {
-  const sumTotal = () => sneaker.sale * counter;
-  const handleRemove = () => {};
+const Cart = ({ basket, cartItem, setCartItem }) => {
+  // State
+  const [modalShow, setModalShow] = useState(false);
+  const [removeItem, setRemoveItem] = useState(0);
+  // UseEffect
+
   return (
     <Card
       style={{
@@ -35,16 +40,25 @@ const Cart = ({ basket, counter }) => {
               <div className="">
                 <Card.Text className="">{sneaker.name}</Card.Text>
                 <Card.Text className="d-block">
-                  ${sneaker.sale}.00 x {basket ? counter : 0}{" "}
-                  <span className="font-weight-bold text-black">
-                    ${sumTotal()}
+                  ${sneaker.sale}.00 x {basket ? cartItem : 0}{" "}
+                  <span className="font-weight-bold text-black ml-3">
+                    ${sneaker.sale * cartItem}
                   </span>
                 </Card.Text>
               </div>
-              <FontAwesomeIcon
-                className="text-secondary"
-                onClick={handleRemove}
-                icon={faTrash}
+              <Button
+                variant="outline-light"
+                onClick={() => setModalShow(true)}
+              >
+                <FontAwesomeIcon className="text-secondary" icon={faTrash} />
+              </Button>
+              <Bin
+                show={modalShow}
+                removeItem={removeItem}
+                setRemoveItem={setRemoveItem}
+                cartItem={cartItem}
+                setCartItem={setCartItem}
+                onHide={() => setModalShow(false)}
               />{" "}
             </>
           ) : (
@@ -56,12 +70,14 @@ const Cart = ({ basket, counter }) => {
           )}
         </div>
         {basket && (
-          <Button
-            className="d-block custom-button w-100 text-white font-weight-bold py-3"
-            size="lg"
-          >
-            Checkout
-          </Button>
+          <Link to="checkout">
+            <Button
+              className="d-block custom-button w-100 text-white font-weight-bold py-3"
+              size="lg"
+            >
+              Checkout
+            </Button>
+          </Link>
         )}
       </Card.Body>
     </Card>
