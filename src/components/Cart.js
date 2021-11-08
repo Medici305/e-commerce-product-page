@@ -12,6 +12,29 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
   const [modalShow, setModalShow] = useState(false);
   const [removeItem, setRemoveItem] = useState(0);
   // UseEffect
+  const handleClick = () => {
+    fetch("http://localhost:5000/create-checkout-session", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: [{ id: 1, quantity: cartItem }],
+      }),
+    })
+      .then((res) => {
+        if (res.ok) return res.json();
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((e) => {
+        console.log("sorry bro");
+        console.error(e.error);
+      });
+  };
 
   return (
     <Card
@@ -70,14 +93,16 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
           )}
         </div>
         {basket && (
-          <Link to="checkout">
-            <Button
-              className="d-block custom-button w-100 text-white font-weight-bold py-3"
-              size="lg"
-            >
-              Checkout
-            </Button>
-          </Link>
+          // <Link to="checkout">
+          <Button
+            className="d-block custom-button w-100 text-white font-weight-bold py-3"
+            type="submit"
+            onClick={() => handleClick()}
+            size="lg"
+          >
+            Checkout
+          </Button>
+          // </Link>
         )}
       </Card.Body>
     </Card>

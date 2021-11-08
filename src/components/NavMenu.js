@@ -35,7 +35,7 @@ const NavMenu = ({
             <img src={logo} alt="logo" />
           </Link>
         </Col>
-        <Col className="d-none d-lg-block " sm={8}>
+        <Col className="d-none d-lg-block " sm={7}>
           <Nav className="me-auto">
             <Nav.Link href="#Collections">Collections</Nav.Link>
             <Nav.Link href="#Men">Men</Nav.Link>
