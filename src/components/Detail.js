@@ -20,7 +20,7 @@ const Detail = ({
   // UseEffect
   useEffect(() => {
     return cartItem > 0 ? setBasket(true) : setBasket(false);
-  }, [cartItem]);
+  }, [setBasket, cartItem] );
   // Function
   const handleCartSubmit = () => {
     setCartItem((prev) => prev + counter);

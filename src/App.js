@@ -8,14 +8,16 @@ import "./sass/app.scss";
 const App = () => {
   return (
     <Switch>
-      <Container fluid className="page p-0 m-0">
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/checkout">
-          <Checkout />
-        </Route>
-      </Container>
+      <React.Fragment>
+        <Container fluid className="page p-0 m-0">
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
+          </Route>
+        </Container>
+      </React.Fragment>
     </Switch>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
 import { Container, Row, Col, Nav } from "react-bootstrap";
@@ -32,7 +32,7 @@ const NavMenu = ({
         </Col>
         <Col className="">
           <Link to="/">
-            <img src={logo} alt="logo" />.
+            <img src={logo} alt="logo" />
           </Link>
         </Col>
         <Col className="d-none d-lg-block " sm={8}>
@@ -49,14 +49,13 @@ const NavMenu = ({
           md="auto"
           className="profile d-flex align-items-center justify-content-around"
         >
-          <a
-            href="#"
+          <div
             className="notification"
             onClick={() => setCartToggle(!cartToggle)}
           >
             <FontAwesomeIcon icon={faShoppingCart} />
             <span>{basket ? cartItem : 0}</span>
-          </a>
+          </div>
           <Link to="/" className="d-flex justify-content-center">
             <img className="" src={profile} alt="avatar" />
           </Link>
