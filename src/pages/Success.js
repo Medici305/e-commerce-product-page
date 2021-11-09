@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Success = () => {
   // Function
@@ -23,16 +21,24 @@ const Success = () => {
       </Row>
       <Row className="h-75 d-flex align-items-center">
         <Col className="text-center h-50 d-flex flex-column justify-content-evenly align-items-center">
-          <FontAwesomeIcon
-            className="text-secondary text-white"
-            size="4x"
-            icon={faCheckCircle}
-            spin
-            style={{
-              animationIterationCount: "2",
-              animationDuration: "1s",
-            }}
-          />
+          <svg
+            className="checkmark"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 52 52"
+          >
+            <circle
+              className="checkmark__circle"
+              cx="26"
+              cy="26"
+              r="25"
+              fill="none"
+            />
+            <path
+              className="checkmark__check"
+              fill="none"
+              d="M14.1 27.2l7.1 7.2 16.7-16.8"
+            />
+          </svg>
           <div>
             {" "}
             <h1 className="text-white">Thank You for our Order!</h1>
@@ -43,7 +49,7 @@ const Success = () => {
           </div>
           <Link to="/">
             <Button
-              className="custom-button border bg-white text-black font-weight-bold"
+              className="custom-button border bg-white text-black font-weight-bold px-5 shadow"
               size="lg"
             >
               Home
