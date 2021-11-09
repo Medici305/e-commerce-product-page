@@ -14,7 +14,6 @@ import {
 const NavMenu = ({
   toggle,
   setToggle,
-  counter,
   basket,
   cartItem,
   setCartToggle,

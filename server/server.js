@@ -1,5 +1,3 @@
-//require("dotenv").config();
-
 const stripe = require("stripe")(
   "sk_test_51JtYZ9L87H3qnVTAnM2zyIp9AlDvppEKWKN1FOh4AT5j73Y07JhB25phfmI8x8QF0kxpFcunNEqyMQ3K07wlInRz00sZjKN1dQ"
 );
@@ -13,10 +11,8 @@ app.use(
   })
 );
 
-const YOUR_DOMAIN = "http://localhost:5000";
-
 const storeItems = new Map([
-  [1, { priceInCents: 12500, name: "fall limited edition sneakers" }],
+  [1, { priceInCents: 12500, name: "Fall Limited Edition Sneaker's" }],
 ]);
 
 app.post("/create-checkout-session", async (req, res) => {
@@ -37,15 +33,14 @@ app.post("/create-checkout-session", async (req, res) => {
           quantity: item.quantity,
         };
       }),
-      success_url: `${YOUR_DOMAIN}/success`,
-      cancel_url: `${YOUR_DOMAIN}/cancel`,
+      success_url: `http://localhost:3000/success`,
+      cancel_url: `http://localhost:3000`,
     });
     res.json({ url: session.url });
     res.redirect(303, session.url);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
-  res.json({ url: "hi" });
 });
 
-app.listen(5000, () => console.log("Running on port 3000"));
+app.listen(5000);

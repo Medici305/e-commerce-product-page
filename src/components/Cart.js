@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Bin from "./Bin";
-import { Link } from "react-router-dom";
 import { sneaker } from "../data";
 import { Card, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +10,7 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
   // State
   const [modalShow, setModalShow] = useState(false);
   const [removeItem, setRemoveItem] = useState(0);
-  // UseEffect
+  // Function
   const handleClick = () => {
     fetch("http://localhost:5000/create-checkout-session", {
       method: "POST",
@@ -31,7 +30,6 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
         window.location = url;
       })
       .catch((e) => {
-        console.log("sorry bro");
         console.error(e.error);
       });
   };
@@ -93,7 +91,6 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
           )}
         </div>
         {basket && (
-          // <Link to="checkout">
           <Button
             className="d-block custom-button w-100 text-white font-weight-bold py-3"
             type="submit"
@@ -102,7 +99,6 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
           >
             Checkout
           </Button>
-          // </Link>
         )}
       </Card.Body>
     </Card>
