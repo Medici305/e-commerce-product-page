@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Bin from "./Bin";
 import { sneaker } from "../data";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import shoe from "../images/image-product-1-thumbnail.jpg";
@@ -10,8 +10,10 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
   // State
   const [modalShow, setModalShow] = useState(false);
   const [removeItem, setRemoveItem] = useState(0);
+  const [loading, setLoading] = useState(false);
   // Function
   const handleClick = () => {
+    setLoading(true);
     fetch("http://localhost:5000/create-checkout-session", {
       method: "POST",
       mode: "cors",
@@ -28,6 +30,7 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
       })
       .then(({ url }) => {
         window.location = url;
+        setLoading(false);
       })
       .catch((e) => {
         console.error(e.error);
@@ -97,7 +100,7 @@ const Cart = ({ basket, cartItem, setCartItem }) => {
             onClick={() => handleClick()}
             size="lg"
           >
-            Checkout
+            {loading ? <Spinner animation="border" /> : "Checkout"}
           </Button>
         )}
       </Card.Body>
